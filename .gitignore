@@ -1,0 +1,9 @@
+# Ignore Everything
+*
+
+# Don't Ignore These
+!*.cpp
+!.gitignore
+# Ignore These
+tempCodeRunnerFile.cpp
+tempCodeRunnerFile
