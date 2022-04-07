@@ -1,3 +1,4 @@
 {
-	"terminal.integrated.fontFamily": "FiraCode Nerd Font"
+	"terminal.integrated.fontFamily": "FiraCode Nerd Font",
+	"editor.fontFamily": "Fira Code"
 }
