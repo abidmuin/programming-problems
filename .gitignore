@@ -1,11 +1,7 @@
-# Ignore Everything
-*
-
-# Don't Ignore These
-!*.cpp
-!.gitignore
-
-# Ignore These
-tempCodeRunnerFile.cpp
-tempCodeRunnerFile
 /.vscode/
+
+/cses/*
+!/cses/*.cpp
+
+/project_euler/*
+!/project_euler/*.cpp
