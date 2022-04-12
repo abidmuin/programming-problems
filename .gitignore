@@ -1,7 +1,10 @@
+*
+!*.cpp
+
 /.vscode/
 
 /cses/*
 !/cses/*.cpp
 
-/project_euler/*
+!/project_euler/
 !/project_euler/*.cpp
