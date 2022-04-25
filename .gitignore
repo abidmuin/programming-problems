@@ -1,10 +1,10 @@
-*
-!*.cpp
+# *
+# !*.cpp
 
-/.vscode/
+ /.vscode/
 
-/cses/*
-!/cses/*.cpp
+# /cses/*
+# !/cses/*.cpp
 
-!/project_euler/
-!/project_euler/*.cpp
+# !/project_euler/
+# !/project_euler/*.cpp
