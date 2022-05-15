@@ -1,5 +1,7 @@
 // https://cses.fi/problemset/task/1092
 
+// REFERENCE - https://www.youtube.com/watch?v=bTMyqDH6cUA
+
 #include <bits/stdc++.h>
 
 using namespace std;
