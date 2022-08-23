@@ -19,6 +19,7 @@ public:
 			{
 				v.push_back(itr->second);
 				v.push_back(i);
+				break;
 			}
 			else
 			{
