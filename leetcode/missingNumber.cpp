@@ -5,13 +5,10 @@ public:
     int missingNumber(vector<int>& nums) {
         int missingNumber = 0;
         int len = nums.size();
-        int total = 0;
         
-        for(auto itr = nums.begin(); itr!=nums.end(); itr++){
-            total += *itr;
+        for(int i=0; i<len; i++){
+            missingNumber = missingNumber ^ nums[i] ^ (i+1);
         }
-        
-        missingNumber = (len*(len+1))/2 - total;
         
         return missingNumber;
     }
