@@ -3,19 +3,16 @@
 class Solution {
 public:
     int missingNumber(vector<int>& nums) {
-        int len = nums.size();
         int missingNumber = 0;
-        sort(nums.begin(), nums.end()); // for binary_search
+        int len = nums.size();
+        int total = 0;
         
-        for(int i=0; i<=len; i++){
-            if(binary_search(nums.begin(), nums.end(), i)){
-                continue;
-            }
-            else{
-                missingNumber = i;
-                break;
-            }
+        for(auto itr = nums.begin(); itr!=nums.end(); itr++){
+            total += *itr;
         }
+        
+        missingNumber = (len*(len+1))/2 - total;
+        
         return missingNumber;
     }
 };
