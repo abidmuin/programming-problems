@@ -5,18 +5,27 @@ class Solution
 public:
 	int removeDuplicates(vector<int> &nums)
 	{
-		vector<int>::iterator itr;
+		int swapIndex = 1;
+		int currentNumber = nums[0];
 
-		itr = unique(nums.begin(), nums.end());
-
-		for (auto itr = nums.begin(); itr != nums.end(); itr++)
+		for (int i = 1; i < nums.size(); i++)
 		{
-			cout << *itr << " ";
+			if (nums[i] != currentNumber)
+			{
+				currentNumber = nums[i];
+				swapNumbers(&nums[i], &nums[swapIndex]);
+				swapIndex++;
+			}
 		}
-		cout << endl;
 
-		nums.resize(distance(nums.begin(), itr));
+		return swapIndex;
+	}
 
-		return nums.size();
+	void swapNumbers(int *x, int *y)
+	{
+		int temp = 0;
+		temp = *y;
+		*y = *x;
+		*x = temp;
 	}
 };
