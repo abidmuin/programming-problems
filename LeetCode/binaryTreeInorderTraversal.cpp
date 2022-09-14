@@ -37,3 +37,30 @@ public:
 		return result;
 	}
 };
+
+// ITERATIVE APPROACH
+class Solution
+{
+public:
+	vector<int> inorderTraversal(TreeNode *root)
+	{
+		TreeNode *currentElement = root;
+		stack<TreeNode *> st;
+		vector<int> result;
+
+		while (currentElement != NULL || !st.empty())
+		{
+			while (currentElement != NULL)
+			{
+				st.push(currentElement);
+				currentElement = currentElement->left;
+			}
+			currentElement = st.top();
+			st.pop();
+			result.push_back(currentElement->val);
+			currentElement = currentElement->right;
+		}
+
+		return result;
+	}
+};
