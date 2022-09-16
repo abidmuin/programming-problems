@@ -1,5 +1,8 @@
 {
 	"terminal.integrated.fontFamily": "FiraCode Nerd Font",
 	"editor.fontFamily": "FiraCode Nerd Font",
-	"editor.fontLigatures": true
+	"editor.fontLigatures": true,
+	"files.associations": {
+		"functional": "cpp"
+	}
 }
