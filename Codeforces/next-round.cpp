@@ -18,22 +18,20 @@ int main()
 	for (int i = 0; i < n; i++)
 	{
 		cin >> tempScore;
-
-		if ((tempScore == 0) && (i == 0))
-		{
-			cout << tempScore << endl;
-			break;
-		}
-
 		scores[i] = tempScore;
 	}
 
 	int minScoreToAdvance = scores[k - 1];
-	for (int i = k; i < n; i++)
+	for (int i = 0; i < n; i++)
 	{
 		if (scores[i] < minScoreToAdvance || scores[i] == 0)
 		{
 			cout << i << endl;
+			break;
+		}
+		else if (i == n - 1)
+		{
+			cout << (i + 1) << endl;
 			break;
 		}
 	}
@@ -42,7 +40,7 @@ int main()
 }
 
 // WITHOUT USING EXTRA SPACE
-/*int main()
+int main()
 {
 	int n = 0;
 	int k = 0;
@@ -83,4 +81,4 @@ int main()
 	}
 
 	return 0;
-}*/
+}
