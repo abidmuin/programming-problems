@@ -13,13 +13,12 @@ int main()
 
 	sort(str.begin(), str.end());
 
-	str.erase(0, (stringLength/2));
+	str.erase(0, (stringLength / 2));
 
 	for (int i = 0; i < stringLength; i++)
 	{
 		if ((str[i] >= '1' && str[i] <= '3') && (i + 1 < stringLength))
 		{
-
 			str.insert((i + 1), "+");
 		}
 	}
