@@ -9,18 +9,11 @@ int main()
 	string str;
 	cin >> str;
 
-	int indexOfSign = 0;
 	int stringLength = str.length();
 
 	sort(str.begin(), str.end());
 
-	for (int i = 0; i < stringLength; i++)
-	{
-		if (str[i] == '+')
-			indexOfSign++;
-	}
-
-	str.erase(0, indexOfSign);
+	str.erase(0, (stringLength/2));
 
 	for (int i = 0; i < stringLength; i++)
 	{
