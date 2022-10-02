@@ -21,7 +21,7 @@ public:
 	{
 		// Check if either of the left or right subtree is null
 		// Then return if both of them are NULL or not
-		if (left == NULL || right == NULL)
+		if (left == nullptr || right == nullptr)
 		{
 			return left == right;
 		}
@@ -35,11 +35,64 @@ public:
 	}
 	bool isSymmetric(TreeNode *root)
 	{
-		if (root == NULL)
+		if (root == nullptr)
 		{
 			return true;
 		}
 
 		return isSymmetric(root->left, root->right);
+	}
+};
+
+// ITERATIVE APPROACH
+
+class Solution
+{
+public:
+	bool isSymmetric(TreeNode *root)
+	{
+		if (root == nullptr)
+		{
+			return true;
+		}
+
+		queue<TreeNode *> q1;
+		queue<TreeNode *> q2;
+
+		q1.push(root->left);
+		q2.push(root->right);
+
+		TreeNode *temp1 = nullptr;
+		TreeNode *temp2 = nullptr;
+
+		while (!q1.empty() && !q2.empty())
+		{
+			temp1 = q1.front();
+			q1.pop();
+
+			temp2 = q2.front();
+			q2.pop();
+
+			if ((temp1 == nullptr && temp2 != nullptr) || (temp1 != nullptr && temp2 == nullptr))
+			{
+				return false;
+			}
+			
+			if (temp1 != nullptr)
+			{
+				if (temp1->val != temp2->val)
+				{
+					return false;
+				}
+
+				q1.push(temp1->left);
+				q1.push(temp1->right);
+
+				q2.push(temp2->right);
+				q2.push(temp2->left);
+			}
+		}
+
+		return true;
 	}
 };
