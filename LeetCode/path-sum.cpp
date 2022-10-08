@@ -34,7 +34,6 @@ public:
 
 	bool hasPathSum(TreeNode *root, int targetSum)
 	{
-
 		return dfs(root, 0, targetSum);
 	}
 };
