@@ -13,24 +13,14 @@ public:
 	vector<int> sortArrayByParity(vector<int> &nums)
 	{
 		int numSize = nums.size();
-		int startIndex = 0;
-		int endIndex = numSize - 1;
+		int evenIndex = 0;
 
-		while (startIndex < endIndex)
+		for (int i = 0; i < numSize; i++)
 		{
-			if ((nums[startIndex] & 1) > (nums[endIndex] & 1))
+			if ((nums[i] & 1) == 0)
 			{
-				swapNumbers(nums[startIndex], nums[endIndex]);
-			}
-
-			if ((nums[startIndex] & 1) == 0)
-			{
-				startIndex++;
-			}
-			
-			if ((nums[endIndex] & 1) != 0)
-			{
-				endIndex--;
+				swapNumbers(nums[i], nums[evenIndex]);
+				evenIndex++;
 			}
 		}
 
