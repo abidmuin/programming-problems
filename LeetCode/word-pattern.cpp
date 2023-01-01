@@ -9,6 +9,7 @@ vector<string> splitString(string str, string delimiter)
 	vector<string> vectorStr;
 	int start = 0;
 	int end = str.find(delimiter);
+
 	while (end != -1)
 	{
 		vectorStr.push_back(str.substr(start, end - start));
@@ -25,30 +26,52 @@ bool wordPattern(string pattern, string s)
 	vector<string> vectorString;
 	vectorString = splitString(s, " ");
 
-	map<char, string> m;
-	map<char, string>::iterator itr;
-
 	int patternLength = pattern.length();
+	int vectorLength = vectorString.size();
+
+	if (patternLength != vectorLength)
+	{
+		return false;
+	}
+
+	// Mapping from left to right
+	map<char, string> charToWord;
+	map<char, string>::iterator itrFirst;
+
+	// Mapping from right to left
+	map<string, char> wordToChar;
+	map<string, char>::iterator itrSecond;
+
 	for (int i = 0; i < patternLength; i++)
 	{
-		itr = m.find(pattern[i]);
-		if ( itr != m.end() && itr->second != vectorString[i])
+		itrFirst = charToWord.find(pattern[i]);
+		if ((itrFirst != charToWord.end()) && (itrFirst->second != vectorString[i]))
+		{
+			return false;
+		}
+		itrSecond = wordToChar.find(vectorString[i]);
+		if ((itrSecond != wordToChar.end()) && (itrSecond->second != pattern[i]))
 		{
 			return false;
 		}
 
-		if (itr == m.end())
+		if (itrFirst == charToWord.end())
 		{
-			m.insert(pair<char, string>(pattern[i], vectorString[i]));
+			charToWord.insert(pair<char, string>(pattern[i], vectorString[i]));
+		}
+		if (itrSecond == wordToChar.end())
+		{
+			wordToChar.insert(pair<string, char>(vectorString[i], pattern[i]));
 		}
 	}
+
 	return true;
 }
 
 int main()
 {
 	string pattern = "abba";
-	string str = "dog cat cat dg";
+	string str = "dog cat cat dog";
 	cout << wordPattern(pattern, str) << endl;
 
 	return 0;
