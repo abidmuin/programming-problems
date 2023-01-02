@@ -7,6 +7,7 @@ public:
 	{
 		int wordLength = word.length();
 
+		// both lowercase and uppercase are valid for single character
 		if (wordLength == 1)
 		{
 			return true;
