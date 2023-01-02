@@ -1,78 +1,68 @@
 // https://leetcode.com/problems/word-pattern/
 
-#include <bits/stdc++.h>
-
-using namespace std;
-
-vector<string> splitString(string str, string delimiter)
+class Solution
 {
-	vector<string> vectorStr;
-	int start = 0;
-	int end = str.find(delimiter);
-
-	while (end != -1)
+public:
+	vector<string> splitString(string str, string delimiter)
 	{
+		vector<string> vectorStr;
+		int start = 0;
+		int end = str.find(delimiter);
+		while (end != -1)
+		{
+			vectorStr.push_back(str.substr(start, end - start));
+			start = end + delimiter.size();
+			end = str.find(delimiter, start);
+		}
 		vectorStr.push_back(str.substr(start, end - start));
-		start = end + delimiter.size();
-		end = str.find(delimiter, start);
-	}
-	vectorStr.push_back(str.substr(start, end - start));
 
-	return vectorStr;
-}
-
-bool wordPattern(string pattern, string s)
-{
-	vector<string> vectorString;
-	vectorString = splitString(s, " ");
-
-	int patternLength = pattern.length();
-	int vectorLength = vectorString.size();
-
-	if (patternLength != vectorLength)
-	{
-		return false;
+		return vectorStr;
 	}
 
-	// Mapping from left to right
-	map<char, string> charToWord;
-	map<char, string>::iterator itrFirst;
-
-	// Mapping from right to left
-	map<string, char> wordToChar;
-	map<string, char>::iterator itrSecond;
-
-	for (int i = 0; i < patternLength; i++)
+	bool wordPattern(string pattern, string s)
 	{
-		itrFirst = charToWord.find(pattern[i]);
-		if ((itrFirst != charToWord.end()) && (itrFirst->second != vectorString[i]))
-		{
-			return false;
-		}
-		itrSecond = wordToChar.find(vectorString[i]);
-		if ((itrSecond != wordToChar.end()) && (itrSecond->second != pattern[i]))
+		vector<string> vectorString;
+		vectorString = splitString(s, " ");
+
+		int patternLength = pattern.length();
+		int vectorLength = vectorString.size();
+
+		if (patternLength != vectorLength)
 		{
 			return false;
 		}
 
-		if (itrFirst == charToWord.end())
+		// Mapping from left to right
+		map<char, string> charToWord;
+		map<char, string>::iterator itrFirst;
+
+		// Mapping from right to left
+		map<string, char> wordToChar;
+		map<string, char>::iterator itrSecond;
+
+		for (int i = 0; i < patternLength; i++)
 		{
-			charToWord.insert(pair<char, string>(pattern[i], vectorString[i]));
+			itrFirst = charToWord.find(pattern[i]);
+			if ((itrFirst != charToWord.end()) && (itrFirst->second != vectorString[i]))
+			{
+				return false;
+			}
+			itrSecond = wordToChar.find(vectorString[i]);
+			if ((itrSecond != wordToChar.end()) && (itrSecond->second != pattern[i]))
+			{
+				return false;
+			}
+
+			if (itrFirst == charToWord.end())
+			{
+				charToWord.insert(pair<char, string>(pattern[i], vectorString[i]));
+			}
+			if (itrSecond == wordToChar.end())
+			{
+				wordToChar.insert(pair<string, char>(vectorString[i], pattern[i]));
+			}
 		}
-		if (itrSecond == wordToChar.end())
-		{
-			wordToChar.insert(pair<string, char>(vectorString[i], pattern[i]));
-		}
+
+		return true;
 	}
-
-	return true;
-}
-
-int main()
-{
-	string pattern = "abba";
-	string str = "dog cat cat dog";
-	cout << wordPattern(pattern, str) << endl;
-
-	return 0;
-}
+};
