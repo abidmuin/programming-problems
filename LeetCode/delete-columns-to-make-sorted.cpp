@@ -1,59 +1,27 @@
 // https://leetcode.com/problems/delete-columns-to-make-sorted/
 
-#include <bits/stdc++.h>
-
-using namespace std;
-
-int minDeletionSize(vector<string> &strs)
+class Solution
 {
-	int colSize = strs[0].size();
-	int rowSize = strs.size();
-	string array[rowSize][colSize];
-	int deletionSize = 0;
-
-	cout << rowSize << " " << colSize << endl;
-
-	// Populate the array
-	for (int i = 0; i < rowSize; i++)
+public:
+	int minDeletionSize(vector<string> &strs)
 	{
-		for (int j = 0; j < colSize; j++)
-		{
-			array[i][j] = strs[i][j];
-		}
-	}
+		int colSize = strs[0].size();
+		int rowSize = strs.size();
+		int deletionSize = 0;
 
-	for (int i = 0; i < rowSize; i++)
-	{
-		for (int j = 0; j < colSize; j++)
+		// Check if sorted or not
+		for (int i = 0; i < colSize; i++)
 		{
-			cout << array[i][j] << " ";
-		}
-		cout << endl;
-	}
-
-	// Check if sorted or not
-	for (int i = 0; i < rowSize; i++)
-	{
-		for (int j = 1; j < colSize; j++)
-		{
-			if (array[j - 1][i] > array[j][i])
+			for (int j = 1; j < rowSize; j++)
 			{
-				deletionSize++;
-				break;
+				if (strs[j - 1][i] > strs[j][i])
+				{
+					deletionSize++;
+					break;
+				}
 			}
 		}
+
+		return deletionSize;
 	}
-
-	cout << deletionSize << endl;
-
-	return 0;
-}
-
-int main()
-{
-	vector<string> str = {"rrjk", "furt", "guzm"};
-
-	minDeletionSize(str);
-
-	return 0;
-}
+};
