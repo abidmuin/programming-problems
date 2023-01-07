@@ -1,52 +1,38 @@
-// https://leetcode.com/problems/gas-station/discussion/
+// https://leetcode.com/problems/gas-station/
 
-#include <bits/stdc++.h>
-
-using namespace std;
-
-int canCompleteCircuit(vector<int> &gas, vector<int> &cost)
+class Solution
 {
-	int gasLength = gas.size();
-	int totalGas = 0;
-	int totalCost = 0;
-
-	for (int i = 0; i < gasLength; i++)
+public:
+	int canCompleteCircuit(vector<int> &gas, vector<int> &cost)
 	{
-		totalGas += gas[i];
-		totalCost += cost[i];
-	}
+		int gasLength = gas.size();
+		int totalGas = 0;
+		int totalCost = 0;
 
-	if (totalGas < totalCost)
-	{
-		return -1;
-	}
-
-	int currentGas = 0;
-	int startingIndex = 0;
-
-	for (int i = 0; i < gasLength; i++)
-	{
-		currentGas = gas[i] - cost[i];
-		if (currentGas < 0)
+		for (int i = 0; i < gasLength; i++)
 		{
-			startingIndex = i + 1;
-			currentGas = 0;
+			totalGas += gas[i];
+			totalCost += cost[i];
 		}
-		else
+
+		if (totalGas < totalCost)
 		{
-			startingIndex = i;
+			return -1;
 		}
+
+		int currentGas = 0;
+		int startingIndex = 0;
+
+		for (int i = 0; i < gasLength; i++)
+		{
+			currentGas += gas[i] - cost[i];
+			if (currentGas < 0)
+			{
+				startingIndex = i + 1;
+				currentGas = 0;
+			}
+		}
+
+		return startingIndex;
 	}
-
-	return startingIndex;
-}
-
-int main()
-{
-	vector<int> gas = {1, 2, 3, 4, 5};
-	vector<int> cost = {3, 4, 5, 1, 2};
-
-	cout << canCompleteCircuit(gas, cost);
-
-	return 0;
-}
+};
