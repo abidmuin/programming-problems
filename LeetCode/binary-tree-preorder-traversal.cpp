@@ -40,3 +40,36 @@ public:
 		return result;
 	}
 };
+
+// ITERATIVE APPROACH
+
+class Solution
+{
+public:
+	vector<int> preorderTraversal(TreeNode *root)
+	{
+		TreeNode *currentElement = root;
+		vector<int> result;
+		stack<TreeNode *> st;
+
+		st.push(root);
+
+		while (currentElement != NULL && !st.empty())
+		{
+			currentElement = st.top();
+			result.push_back(currentElement->val);
+			st.pop();
+
+			if (currentElement->right != NULL)
+			{
+				st.push(currentElement->right);
+			}
+			if (currentElement->left != NULL)
+			{
+				st.push(currentElement->left);
+			}
+		}
+
+		return result;
+	}
+};
