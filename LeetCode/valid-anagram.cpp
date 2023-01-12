@@ -1,5 +1,7 @@
 // https://leetcode.com/problems/valid-anagram/
 
+// Using HashMap
+
 class Solution
 {
 public:
@@ -45,5 +47,19 @@ public:
 		}
 
 		return true;
+	}
+};
+
+// Using Sort
+
+class Solution
+{
+public:
+	bool isAnagram(string s, string t)
+	{
+		sort(s.begin(), s.end());
+		sort(t.begin(), t.end());
+
+		return (s == t);
 	}
 };
