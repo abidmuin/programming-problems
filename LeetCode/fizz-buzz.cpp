@@ -5,7 +5,6 @@ class Solution
 public:
 	vector<string> fizzBuzz(int n)
 	{
-
 		vector<string> v;
 
 		for (int i = 1; i <= n; i++)
