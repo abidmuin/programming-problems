@@ -1,37 +1,50 @@
 // https://leetcode.com/problems/n-th-tribonacci-number/
 
-#include <bits/stdc++.h>
-
-using namespace std;
+// Approach 1
 
 class Solution
 {
 public:
 	int tribonacci(int n)
 	{
-		int memArray[3] = {0, 1, 1};
-
-		if (n < 3)
+		if (n < 2)
 		{
-			return memArray[n];
+			return n;
 		}
 
-		int temp = 0;
-		for (int i = 3; i <= n; i++)
+		int t0 = 0;
+		int t1 = 1;
+		int t2 = 1;
+		int t = t0 + t1 + t2;
+
+		while (n > 2)
 		{
-			temp = memArray[i - 3] + memArray[i - 2] + memArray[i - 1];
-			memArray[0] = memArray[1];
-			memArray[1] = memArray[2];
-			memArray[2] = temp;
+			t = t0 + t1 + t2;
+			t0 = t1;
+			t1 = t2;
+			t2 = t;
+
+			n--;
 		}
 
-		return memArray[2];
+		return t2;
 	}
 };
 
-int main()
+// Approach 2
+
+class Solution
 {
-	Solution sol;
-	
-	cout << sol.tribonacci(4) << endl;
-}
+public:
+	int tribonacci(int n)
+	{
+		int arr[] = {0, 1, 1};
+
+		for (int i = 3; i <= n; i++)
+		{
+			arr[i % 3] = arr[0] + arr[1] + arr[2];
+		}
+
+		return arr[n % 3];
+	}
+};
