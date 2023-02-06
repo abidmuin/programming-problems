@@ -1,9 +1,5 @@
 // https://leetcode.com/problems/shuffle-the-array/
 
-#include <bits/stdc++.h>
-
-using namespace std;
-
 // NAIVE APPROACH
 class Solution
 {
@@ -39,21 +35,22 @@ public:
 	}
 };
 
-int main()
+// In Place Approach
+class Solution
 {
-	Solution sol;
-
-	int n = 3;
-	vector<int> nums = {2, 5, 1, 3, 4, 7};
-	vector<int> result;
-
-	result = sol.shuffle(nums, n);
-
-	for (auto itr : result)
+public:
+	vector<int> shuffle(vector<int> &nums, int n)
 	{
-		cout << itr << " ";
-	}
-	cout << endl;
+		int vecSize = nums.size();
+		int swapIndex = n;
 
-	return 0;
-}
+		for (int i = 1; i < vecSize; i += 2)
+		{
+			nums.insert((nums.begin() + i), nums[swapIndex]);
+			swapIndex++;
+			nums.erase(nums.begin() + swapIndex);
+		}
+
+		return nums;
+	}
+};
