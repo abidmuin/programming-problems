@@ -7,7 +7,7 @@ using namespace std;
 int main()
 {
 	long long int n = 0;
-	set<long long int> s;
+	unordered_set<long long int> s;
 
 	for (int i = 0; i < 4; i++)
 	{
@@ -27,5 +27,6 @@ int main()
 	{
 		cout << (4 - s.size()) << endl;
 	}
+
 	return 0;
 }
