@@ -6,50 +6,54 @@ using namespace std;
 
 int main()
 {
-	int test_cases = 0;
-	cin >> test_cases;
+	int n = 0;
+	cin >> n;
 
-	vector<int> v;
-	vector<int>::iterator itr;
+	vector<int> v(n);
+	int temp = 0;
 
-	while (test_cases--)
+	int maxHeight = 0;
+	int maxHeightIndex = 0;
+
+	int minHeight = 101;
+	int minHeightIndex = 0;
+
+	for (int i = 0; i < n; i++)
 	{
-		int temp = 0;
 		cin >> temp;
 		v.push_back(temp);
+
+		if (temp > maxHeight)
+		{
+			maxHeight = temp;
+			maxHeightIndex = i;
+		}
+
+		if (temp <= minHeight)
+		{
+			minHeight = temp;
+			minHeightIndex = i;
+		}
 	}
 
-	vector<int> temp;
-	temp = v;
-	sort(temp.begin(), temp.end());
+	// cout << maxHeight << " " << maxHeightIndex << endl;
+	// cout << minHeight << " " << minHeightIndex << endl;
 
-	int smallest = 0, greatest = 0;
-	smallest = temp[0];
-	greatest = temp[temp.size() - 1];
-	vector<int> mini;
-	vector<int> maxi;
-	mini.push_back(smallest);
-	maxi.push_back(greatest);
+	int minHeightTime = 0;
+	int maxHeightTime = 0;
 
-	// index of smallest element
-	itr = find_end(v.begin(), v.end(), mini.begin(), mini.end());
-	int min_index = (itr - v.begin());
+	minHeightTime = n - minHeightIndex - 1;
+	maxHeightTime = maxHeightIndex - 0;
 
-	// index of greatest element;
-	itr = find(v.begin(), v.end(), greatest);
-	int max_index = itr - v.begin();
+	// cout << minHeightTime << " " << maxHeightTime << endl;
 
-	if (max_index < min_index)
+	if (maxHeightIndex > minHeightIndex)
 	{
-		int cost = 0;
-		cost = (max_index - 0) + (v.size() - min_index - 1);
-		cout << cost << endl;
+		cout << (minHeightTime + maxHeightTime - 1) << endl;
 	}
 	else
 	{
-		int cost = 0;
-		cost = (max_index - 0) + (v.size() - min_index - 2);
-		cout << cost << endl;
+		cout << (minHeightTime + maxHeightTime) << endl;
 	}
 
 	return 0;
