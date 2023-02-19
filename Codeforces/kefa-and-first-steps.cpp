@@ -6,39 +6,36 @@ using namespace std;
 
 int main()
 {
+	ios::sync_with_stdio(false);
+	cin.tie(nullptr);
+
 	int n = 0;
 	cin >> n;
 
-	int maxSequence = 0;
-	int currentMax = 1;
 	int prevNumber = 0;
 	int currentNumber = 0;
 
-	for (int i = 0; i < n; i++)
+	cin >> prevNumber;
+
+	int maxSequence = 1;
+	int currentMax = 1;
+
+	for (int i = 1; i < n; i++)
 	{
 		cin >> currentNumber;
 
-		if (i == 0)
+		if (currentNumber >= prevNumber)
 		{
-			prevNumber = currentNumber;
+			currentMax++;
 		}
 		else
 		{
-			if (currentNumber >= prevNumber)
-			{
-				currentMax++;
-				prevNumber = currentNumber;
-			}
-			else
-			{
-				maxSequence = max(currentMax, maxSequence);
-				currentMax = 1;
-				prevNumber = currentNumber;
-			}
+			currentMax = 1;
 		}
-	}
 
-	maxSequence = max(currentMax, maxSequence);
+		prevNumber = currentNumber;
+		maxSequence = max(currentMax, maxSequence);
+	}
 
 	cout << maxSequence << endl;
 
