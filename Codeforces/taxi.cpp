@@ -52,17 +52,36 @@ int main()
 		}
 	}
 
-	if (((ones + threes) & 1) == 0)
+	if (threes >= ones)
 	{
-		taxis += (ones + threes) / 2;
-	}
-	else if (threes > ones)
-	{
-		taxis += ((ones + threes) / 2) + 1;
+		taxis += threes;
+		ones = 0;
 	}
 	else
 	{
-		
+		taxis += threes;
+		ones -= threes;
+	}
+
+	if (twos > 0)
+	{
+		taxis += (twos / 2);
+		twos = (twos & 1);
+	}
+
+	int remainingChilds = ones + (twos * 2);
+
+	if (remainingChilds <= 4 && remainingChilds > 0)
+	{
+		taxis += 1;
+	}
+	else if ((remainingChilds % 4) == 0)
+	{
+		taxis += (remainingChilds / 4);
+	}
+	else
+	{
+		taxis += (remainingChilds / 4) + 1;
 	}
 
 	cout << taxis << endl;
