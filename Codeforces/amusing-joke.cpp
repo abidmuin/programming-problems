@@ -16,54 +16,25 @@ int main()
 
 	cin >> guestName >> residentHost >> lettersPile;
 
-	map<char, int> m;
-	map<char, int>::iterator itr;
+	int str[26] = {0};
 
 	for (auto ch : guestName)
 	{
-		itr = m.find(ch);
-
-		if (itr != m.end())
-		{
-			m[ch]++;
-		}
-		else
-		{
-			m.insert({ch, 1});
-		}
+		str[ch - 'A']++;
 	}
 
 	for (auto ch : residentHost)
 	{
-		itr = m.find(ch);
-
-		if (itr != m.end())
-		{
-			m[ch]++;
-		}
-		else
-		{
-			m.insert({ch, 1});
-		}
+		str[ch - 'A']++;
 	}
 
 	bool isPossible = true;
 
 	for (auto ch : lettersPile)
 	{
-		itr = m.find(ch);
-
-		if (itr != m.end())
+		if (str[ch - 'A'] > 0)
 		{
-			if (m[ch] > 0)
-			{
-				m[ch]--;
-			}
-			else
-			{
-				isPossible = false;
-				break;
-			}
+			str[ch - 'A']--;
 		}
 		else
 		{
@@ -72,11 +43,12 @@ int main()
 		}
 	}
 
-	for (auto itr : m)
+	for (auto ch : str)
 	{
-		if (itr.second > 0)
+		if (ch > 0)
 		{
 			isPossible = false;
+			break;
 		}
 	}
 
