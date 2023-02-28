@@ -24,12 +24,11 @@ int main()
 
 		if (itr != m.end())
 		{
-			name += to_string(++m[name]);
-			cout << name << endl;
+			cout << name << ++itr->second << "\n";
 		}
 		else
 		{
-			cout << "OK" << endl;
+			cout << "OK" << "\n";
 			m.insert({name, 0});
 		}
 	}
