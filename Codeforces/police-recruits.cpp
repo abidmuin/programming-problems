@@ -14,8 +14,31 @@ int main()
 	cin >> numberOfEvents;
 
 	int recruits = 0;
-	int crimes = 0;
 	int untreatedCrimes = 0;
+	int currentEvent = 0;
+
+	while (numberOfEvents--)
+	{
+		cin >> currentEvent;
+
+		if (currentEvent == -1)
+		{
+			if (recruits > 0)
+			{
+				recruits--;
+			}
+			else
+			{
+				untreatedCrimes++;
+			}
+		}
+		else if (currentEvent <= 10)
+		{
+			recruits += currentEvent;
+		}
+	}
+
+	cout << untreatedCrimes << endl;
 
 	return 0;
 }
