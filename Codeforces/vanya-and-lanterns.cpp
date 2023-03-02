@@ -27,15 +27,15 @@ int main()
 	int x = v[0] - 0;								  // Distance between starting point lanterns and starting point of street (i.e 0)
 	int y = lengthOfStreet - v[numberOfLanterns - 1]; // Distance between ending point lanterns and ending point of street
 
-	int maxGlowRadius = 2 * max(x, y); // Maximum glow radius of a lantern
-	double minLightRadius = 0;		   // Minimum light radius to cover whole street
+	int maxDistance = 2 * max(x, y); // Maximum distance between two lanterns
+	double minLightRadius = 0;		 // Minimum light radius to cover whole street
 
 	for (int i = 0; i < numberOfLanterns - 1; i++)
 	{
-		maxGlowRadius = max(maxGlowRadius, (v[i + 1] - v[i]));
+		maxDistance = max(maxDistance, (v[i + 1] - v[i]));
 	}
 
-	minLightRadius = double(maxGlowRadius / 2.0);
+	minLightRadius = (maxDistance / 2.0);
 
 	cout << fixed << setprecision(10) << minLightRadius << endl;
 
