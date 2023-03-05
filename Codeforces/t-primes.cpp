@@ -34,7 +34,7 @@ bool isPrime(long long int num)
 
 int main()
 {
-	long long int testCases = 0;
+	int testCases = 0;
 	cin >> testCases;
 
 	long long int num = 0;
