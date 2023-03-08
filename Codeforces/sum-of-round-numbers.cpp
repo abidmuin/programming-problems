@@ -13,43 +13,32 @@ int main()
 	int testCases = 0;
 	cin >> testCases;
 
-	string number;
-	string tempNumber;
-	vector<string> v;
+	int number = 0;
+	int remainder = 0;
+	int power = 1;
 
-	int numSize = 0;
-	int minOperations = 0;
+	vector<int> v;
+	int vecSize = 0;
 
 	while (testCases--)
 	{
 		cin >> number;
 
-		numSize = number.size();
-
-		for (int i = 0; i < numSize; i++)
+		while (number != 0)
 		{
-			if (number[i] != '0')
+			remainder = number % 10;
+
+			if (remainder != 0)
 			{
-				tempNumber += number[i];
-
-				for (int j = i + 1; j < numSize; j++)
-				{
-					tempNumber += '0';
-				}
-
-				v.push_back(tempNumber);
-				minOperations++;
-				tempNumber = "";
+				v.push_back(remainder * power);
 			}
 		}
-
-		cout << minOperations << endl;
 
 		for (auto itr : v)
 		{
 			cout << itr << " ";
 		}
-		
+
 		cout << endl;
 
 		minOperations = 0;
