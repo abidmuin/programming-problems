@@ -15,10 +15,8 @@ int main()
 
 	int number = 0;
 	int remainder = 0;
-	int power = 1;
-
+	int multiplier = 1;
 	vector<int> v;
-	int vecSize = 0;
 
 	while (testCases--)
 	{
@@ -30,19 +28,23 @@ int main()
 
 			if (remainder != 0)
 			{
-				v.push_back(remainder * power);
+				v.push_back(remainder * multiplier);
 			}
+
+			number /= 10;
+			multiplier *= 10;
 		}
 
-		for (auto itr : v)
+		cout << v.size() << "\n";
+
+		for (auto num : v)
 		{
-			cout << itr << " ";
+			cout << num << " ";
 		}
+		cout << "\n";
 
-		cout << endl;
-
-		minOperations = 0;
 		v.clear();
+		multiplier = 1;
 	}
 
 	return 0;
