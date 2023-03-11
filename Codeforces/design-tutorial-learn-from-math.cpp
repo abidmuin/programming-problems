@@ -19,7 +19,7 @@ int main()
 	}
 	else
 	{
-		cout << (num - 8) << " " << 8 << endl;
+		cout << (num - 4) << " " << 4 << endl;
 	}
 
 	return 0;
