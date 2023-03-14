@@ -14,39 +14,44 @@ int main()
 	cin >> testCases;
 
 	int arrLength = 0;
+	int temp = 0;
 
 	while (testCases--)
 	{
 		cin >> arrLength;
 
-		if ((arrLength % 4) != 0)
+		if (arrLength & 3)
 		{
 			cout << "NO";
 		}
 		else
 		{
 			cout << "YES" << "\n";
-			
-			vector<int> v;
 
-			for (int i = 2; i <= arrLength; i += 2)
+			int arr[arrLength];
+
+			temp = 2;
+			for (int i = 0; i <= arrLength / 2; i++)
 			{
-				v.push_back(i);
+				arr[i] = temp;
+				temp += 2;
 			}
 
-			for (int i = 1; i < arrLength; i += 2)
+			temp = 1;
+			for (int i = arrLength / 2; i < arrLength; i++)
 			{
 				if ((i + 2) > arrLength)
 				{
-					v.push_back(i + (arrLength / 2));
+					arr[i] = temp + (arrLength / 2);
 				}
 				else
 				{
-					v.push_back(i);
+					arr[i] = temp;
+					temp += 2;
 				}
 			}
 
-			for (auto itr : v)
+			for (auto itr : arr)
 			{
 				cout << itr << " ";
 			}
