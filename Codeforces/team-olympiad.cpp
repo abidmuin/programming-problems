@@ -13,48 +13,36 @@ int main()
 	int numberOfChildren = 0;
 	cin >> numberOfChildren;
 
-	int count1 = 0, count2 = 0, count3 = 0;
-	int skill = 0;
+	int programming[numberOfChildren], math[numberOfChildren], pe[numberOfChildren];
+	int index1 = 0, index2 = 0, index3 = 0, skill = 0;
 
-	multimap<int, int> m;
-	multimap<int, int>::iterator itr;
-
-	for (int i = 1; i <= numberOfChildren; i++)
+	for (int i = 0; i < numberOfChildren; i++)
 	{
 		cin >> skill;
 
-		m.insert({skill, i});
-
 		if (skill == 1)
 		{
-			count1++;
+			programming[index1] = i;
+			index1++;
 		}
 		else if (skill == 2)
 		{
-			count2++;
+			math[index2] = i;
+			index2++;
 		}
 		else
 		{
-			count3++;
+			pe[index3] = i;
+			index3++;
 		}
 	}
 
-	int maxPossibleTeams = min({count1, count2, count3});
+	int maxPossibleTeams = min({index1, index2, index3});
 	cout << maxPossibleTeams << endl;
 
-	for (int i = 1; i <= maxPossibleTeams; i++)
+	for (int i = 0; i < maxPossibleTeams; i++)
 	{
-		itr = m.find(1);
-		cout << itr->second << " ";
-		m.erase(itr);
-
-		itr = m.find(2);
-		cout << itr->second << " ";
-		m.erase(itr);
-
-		itr = m.find(3);
-		cout << itr->second << "\n";
-		m.erase(itr);
+		cout << (programming[i] + 1) << " " << (math[i] + 1) << " " << (pe[i] + 1) << "\n";
 	}
 
 	return 0;
