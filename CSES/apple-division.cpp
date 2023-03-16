@@ -20,20 +20,6 @@ int main()
 		cin >> v[i];
 	}
 
-	for (auto itr : v)
-	{
-		cout << itr << " ";
-	}
-	cout << endl;
-
-	// sort(v.begin(), v.end());
-
-	for (auto itr : v)
-	{
-		cout << itr << " ";
-	}
-	cout << endl;
-
 	int leftIndex = 0, rightIndex = (apples - 1);
 	int leftSum = 0, rightSum = 0;
 
@@ -57,8 +43,3 @@ int main()
 
 	return 0;
 }
-
-/*
-1 2 3 4 7
-
-*/
