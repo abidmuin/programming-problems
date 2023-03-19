@@ -13,13 +13,15 @@ int main()
 	int apples = 0;
 	cin >> apples;
 
+	/*
 	vector<int> v(apples);
 
 	for (int i = 0; i < apples; i++)
 	{
 		cin >> v[i];
 	}
-
+	
+	
 	int leftIndex = 0, rightIndex = (apples - 1);
 	int leftSum = 0, rightSum = 0;
 
@@ -40,6 +42,7 @@ int main()
 	}
 
 	cout << abs(leftSum - rightSum) << endl;
+	*/
 
 	return 0;
 }
