@@ -10,5 +10,8 @@ int main()
 	cin.tie(nullptr);
 	cout.tie(nullptr);
 
+	int n = 0;
+	cin >> n;
+
 	return 0;
 }
