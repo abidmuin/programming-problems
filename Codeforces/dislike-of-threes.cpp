@@ -10,5 +10,10 @@ int main()
 	cin.tie(nullptr);
 	cout.tie(nullptr);
 
+	int testCases = 0;
+	cin >> testCases;
+
+	
+
 	return 0;
 }
