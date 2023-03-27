@@ -10,5 +10,31 @@ int main()
 	cin.tie(nullptr);
 	cout.tie(nullptr);
 
+	string str;
+	cin >> str;
+
+	int stringSize = str.size();
+	string result;
+
+	for (int i = 0; i < stringSize; i++)
+	{
+		if (str[i] == '.')
+		{
+			result += '0';
+		}
+		else if (str[i] == '-' && str[i + 1] == '.')
+		{
+			result += '1';
+			i++;
+		}
+		else if (str[i] == '-' && str[i + 1] == '-')
+		{
+			result += '2';
+			i++;
+		}
+	}
+
+	cout << result << endl;
+
 	return 0;
 }
