@@ -41,7 +41,6 @@ int main()
 		}
 
 		totalOddIndices = (arrayLength / 2);
-		// cout << totalOddIndices << endl;
 
 		if (oddElementsCounter != totalOddIndices)
 		{
@@ -51,9 +50,6 @@ int main()
 		{
 			cout << (oddElementsCounter - oddElementsInOddIndex) << endl;
 		}
-
-		// cout << oddElementsCounter << endl;
-		// cout << oddElementsInOddIndex << endl;
 
 		oddElementsCounter = 0;
 		oddElementsInOddIndex = 0;
