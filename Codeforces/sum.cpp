@@ -19,15 +19,16 @@ int main()
 	{
 		cin >> a >> b >> c;
 
-		if ((a == b) && (b == c))
+		if ((a + b == c) || (b + c == a) || (c + a == b))
 		{
-			cout << "NO"
-				 << "\n";
+			cout << "YES";
 		}
 		else
 		{
-			
+			cout << "NO";
 		}
+
+		cout << "\n";
 	}
 
 	return 0;
