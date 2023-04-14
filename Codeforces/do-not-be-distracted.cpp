@@ -10,5 +10,15 @@ int main()
 	cin.tie(nullptr);
 	cout.tie(nullptr);
 
+	int testCases = 0;
+	cin >> testCases;
+
+	int numberOfDays = 0;
+
+	while (testCases--)
+	{
+		cin >> numberOfDays;
+	}
+
 	return 0;
 }
