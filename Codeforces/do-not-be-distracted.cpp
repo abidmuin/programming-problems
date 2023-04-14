@@ -14,10 +14,29 @@ int main()
 	cin >> testCases;
 
 	int numberOfDays = 0;
+	string originalString = "";
+	string sortedString = "";
 
 	while (testCases--)
 	{
 		cin >> numberOfDays;
+
+		cin >> originalString;
+
+		sortedString = originalString;
+
+		sort(sortedString.begin(), sortedString.end());
+
+		if (originalString == sortedString)
+		{
+			cout << "YES";
+		}
+		else
+		{
+			cout << "NO";
+		}
+
+		cout << "\n";
 	}
 
 	return 0;
