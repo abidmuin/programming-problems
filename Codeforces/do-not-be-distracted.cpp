@@ -24,7 +24,7 @@ int main()
 		cin >> originalString;
 
 		sortedString = originalString;
-
+		// Order does not matter. Check repeated character later
 		sort(sortedString.begin(), sortedString.end());
 
 		if (originalString == sortedString)
