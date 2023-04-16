@@ -13,30 +13,20 @@ int main()
 	int testCases = 0;
 	cin >> testCases;
 
-	int numberOfDays = 0;
-	string originalString = "";
-	string sortedString = "";
+	string str = "";
+	int stringLength = 0;
+	char previousChar = ' ';
+	set<char> s;
 
 	while (testCases--)
 	{
-		cin >> numberOfDays;
+		cin >> str;
 
-		cin >> originalString;
+		stringLength = str.size();
 
-		sortedString = originalString;
-
-		sort(sortedString.begin(), sortedString.end());
-
-		if (originalString == sortedString)
+		for (int i = 0; i < stringLength; i++)
 		{
-			cout << "YES";
 		}
-		else
-		{
-			cout << "NO";
-		}
-
-		cout << "\n";
 	}
 
 	return 0;
