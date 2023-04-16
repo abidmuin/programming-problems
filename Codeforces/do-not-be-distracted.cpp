@@ -16,6 +16,7 @@ int main()
 	string str = "";
 	int stringLength = 0;
 	char previousChar = ' ';
+	char currentChar = ' ';
 	set<char> s;
 
 	while (testCases--)
@@ -24,7 +25,10 @@ int main()
 
 		stringLength = str.size();
 
-		for (int i = 0; i < stringLength; i++)
+		currentChar = str[0];
+		s.insert(currentChar);
+
+		for (int i = 1; i < stringLength; i++)
 		{
 		}
 	}
