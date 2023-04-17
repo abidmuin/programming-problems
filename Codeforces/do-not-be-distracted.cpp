@@ -13,24 +13,57 @@ int main()
 	int testCases = 0;
 	cin >> testCases;
 
+	int numberOfDays = 0;
 	string str = "";
-	int stringLength = 0;
-	char previousChar = ' ';
-	char currentChar = ' ';
+
+	char previousChar, currentChar;
+	bool isDistracted = false;
+
 	set<char> s;
+	set<char>::iterator itr;
 
 	while (testCases--)
 	{
+		cin >> numberOfDays;
 		cin >> str;
-
-		stringLength = str.size();
 
 		currentChar = str[0];
 		s.insert(currentChar);
 
-		for (int i = 1; i < stringLength; i++)
+		for (int i = 1; i < numberOfDays; i++)
 		{
+			previousChar = currentChar;
+			currentChar = str[i];
+
+			if (currentChar != previousChar)
+			{
+				itr = s.find(currentChar);
+
+				if (itr != s.end())
+				{
+					isDistracted = true;
+				}
+				else
+				{
+					s.insert(currentChar);
+				}
+			}
 		}
+
+		if (isDistracted)
+		{
+			cout << "NO";
+		}
+		else
+		{
+			cout << "YES";
+		}
+		cout << "\n";
+
+		s.clear();
+		previousChar = '\0';
+		currentChar = '\0';
+		isDistracted = false;
 	}
 
 	return 0;
