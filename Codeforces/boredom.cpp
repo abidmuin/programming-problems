@@ -12,6 +12,14 @@ int main()
 
 	int n = 0;
 	cin >> n;
+	
+	vector<int> v(n);
+	int temp=0;
+	
+	while(n--){
+		cin >> temp;
+		v.push_back(temp);
+	}
 
 	return 0;
 }
