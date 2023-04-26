@@ -1,7 +1,7 @@
 // https://leetcode.com/problems/add-digits/
 
-// Intuition: Digit Root => (https://brilliant.org/wiki/digital-root/)
 
+// Intuition: Digit Root => (https://brilliant.org/wiki/digital-root/)
 class Solution
 {
 public:
