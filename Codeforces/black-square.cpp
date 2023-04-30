@@ -10,5 +10,11 @@ int main()
 	cin.tie(nullptr);
 	cout.tie(nullptr);
 
+	int a[4] = {0};
+
+	cin >> a[0] >> a[1] >> a[2] >> a[3];
+
+	
+
 	return 0;
 }
