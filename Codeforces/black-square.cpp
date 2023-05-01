@@ -11,10 +11,9 @@ int main()
 	cout.tie(nullptr);
 
 	int a[4] = {0};
-
 	cin >> a[0] >> a[1] >> a[2] >> a[3];
-
 	
+	int result = 0;	
 
 	return 0;
 }
