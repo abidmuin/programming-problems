@@ -5,8 +5,13 @@
  * @return {Function}
  */
 var once = function (fn) {
-	return function (...args) {
+	let isCalled = false;
 
+	return function (...args) {
+		if (!isCalled) {
+			isCalled = true;
+			return fn(...args);
+		}
 	}
 };
 
