@@ -4,15 +4,16 @@
  * @param {Function} fn
  * @return {Function}
  */
+
 var curry = function (fn) {
-	return function curried() {
-		if (args.length >= fn.length) {
-			return fn(...args);
-		} else {
+	return function curried(...args) {
+		if (args.length < fn.length) {
 			return function (...restArgs) {
 				return curried(...args, ...restArgs);
-			};
+			}
 		}
+
+		return fn(...args);
 	};
 };
 
