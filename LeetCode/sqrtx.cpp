@@ -1,9 +1,5 @@
 // https://leetcode.com/problems/sqrtx/
 
-#include <bits/stdc++.h>
-
-using namespace std;
-
 class Solution
 {
 public:
@@ -39,18 +35,3 @@ public:
 		return upper;
 	}
 };
-
-int main()
-{
-	ios_base::sync_with_stdio(false);
-	cin.tie(nullptr);
-	cout.tie(nullptr);
-
-	int x = 8;
-
-	Solution sol;
-
-	cout << sol.mySqrt(x) << endl;
-
-	return 0;
-}
