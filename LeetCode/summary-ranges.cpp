@@ -1,9 +1,5 @@
 // https://leetcode.com/problems/summary-ranges/
 
-#include <bits/stdc++.h>
-
-using namespace std;
-
 class Solution
 {
 public:
@@ -11,45 +7,59 @@ public:
 	{
 		int vecSize = nums.size();
 		vector<string> result;
-
-		int currentLowerBound = INT_MIN;
 		string tempResult = "";
-		for (int i = 1; i < vecSize; i++)
+
+		if (vecSize == 0)
 		{
-			if (nums[i] != nums[i - 1] + 1)
+			return result;
+		}
+
+		int lowerIndex = 0;
+		int currentIndex = 0;
+		int higherIndex = 1;
+
+		while (higherIndex < vecSize)
+		{
+			if (nums[higherIndex] == nums[currentIndex] + 1)
 			{
-				if (currentLowerBound == INT_MIN)
+				currentIndex = higherIndex;
+			}
+			else if (nums[higherIndex] != nums[currentIndex] + 1)
+			{
+				if (currentIndex == lowerIndex)
 				{
-					tempResult = nums[i - 1];
-					result.push_back(tempResult);
-					tempResult = "";
+					tempResult = to_string(nums[currentIndex]);
 				}
 				else
 				{
-					currentLowerBound = nums[i];
+					tempResult += to_string(nums[lowerIndex]);
+					tempResult += "->";
+					tempResult += to_string(nums[currentIndex]);
 				}
+
+				result.push_back(tempResult);
+				tempResult = "";
+
+				lowerIndex = higherIndex;
+				currentIndex = higherIndex;
 			}
+
+			higherIndex++;
 		}
+
+		if (currentIndex == lowerIndex)
+		{
+			tempResult = to_string(nums[currentIndex]);
+		}
+		else
+		{
+			tempResult += to_string(nums[lowerIndex]);
+			tempResult += "->";
+			tempResult += to_string(nums[currentIndex]);
+		}
+
+		result.push_back(tempResult);
+
+		return result;
 	}
 };
-
-int main()
-{
-	ios_base::sync_with_stdio(false);
-	cin.tie(nullptr);
-	cout.tie(nullptr);
-
-	vector<int> nums = {0, 1, 2, 4, 5, 7};
-	vector<string> result;
-
-	Solution sol;
-
-	result = sol.summaryRanges(nums);
-
-	for (int i = 0; i < result.size(); i++)
-	{
-		cout << result[i] << "->";
-	}
-
-	return 0;
-}
