@@ -1,9 +1,5 @@
 // https://leetcode.com/problems/single-number/
 
-#include <bits/stdc++.h>
-
-using namespace std;
-
 /*
 ---HASHMAP---
 Time Complexity => O(N)
@@ -47,16 +43,24 @@ public:
 	}
 };
 
-int main()
+/*
+---XOR---
+Time Complexity => O(N)
+Space Complexity => O(1)
+*/
+
+class Solution
 {
-	ios_base::sync_with_stdio(false);
-	cin.tie(nullptr);
-	cout.tie(nullptr);
+public:
+	int singleNumber(vector<int> &nums)
+	{
+		int result = 0;
 
-	vector<int> nums = {4, 1, 2, 1, 2};
-	Solution sol;
+		for (auto &&num : nums)
+		{
+			result ^= num;
+		}
 
-	cout << sol.singleNumber(nums) << endl;
-
-	return 0;
-}
+		return result;
+	}
+};
