@@ -1,51 +1,28 @@
 // https://leetcode.com/problems/peak-index-in-a-mountain-array/
 
-#include <bits/stdc++.h>
-
-using namespace std;
-
 class Solution
 {
 public:
-	int peakIndexInMountainArray(vector<int> &arr)
+	int peakIndexInMountainArray(std::vector<int> &arr)
 	{
-		int lowIndex = 0;
-		int highIndex = arr.size() - 1;
-		int midIndex = 0;
-		int maxValueIndex = 0;
+		int left = 0;
+		int right = arr.size() - 1;
+		int mid = 0;
 
-		while (lowIndex <= highIndex)
+		while (left < right)
 		{
-			midIndex = (lowIndex + highIndex) / 2;
+			mid = (left + right) >> 1;
 
-			if ((arr[midIndex] > arr[midIndex - 1]) && (arr[midIndex] > arr[midIndex + 1]))
+			if (arr[mid] < arr[mid + 1])
 			{
-				maxValueIndex = midIndex;
-				break;
+				left = mid + 1;
 			}
-			else if (arr[midIndex] < arr[midIndex + 1])
+			else
 			{
-				lowIndex++;
-			}
-			else if (arr[midIndex] < arr[midIndex - 1])
-			{
-				highIndex--;
+				right = mid;
 			}
 		}
 
-		return maxValueIndex;
+		return left;
 	}
 };
-
-int main()
-{
-	ios_base::sync_with_stdio(false);
-	cin.tie(nullptr);
-	cout.tie(nullptr);
-
-	vector<int> arr = {0, 10, 5, 2};
-	Solution sol;
-	cout << sol.peakIndexInMountainArray(arr) << endl;
-
-	return 0;
-}
