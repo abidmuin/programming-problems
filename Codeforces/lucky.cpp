@@ -1,10 +1,5 @@
 // https://codeforces.com/problemset/problem/1676/A
 
-/*
-Time Complexity =>
-Space Complexity =>
-*/
-
 #include <bits/stdc++.h>
 
 using namespace std;
