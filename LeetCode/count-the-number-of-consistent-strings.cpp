@@ -1,9 +1,5 @@
 // https://leetcode.com/problems/count-the-number-of-consistent-strings/
 
-#include <bits/stdc++.h>
-
-using namespace std;
-
 class Solution
 {
 public:
@@ -48,18 +44,3 @@ public:
 		return result;
 	}
 };
-
-int main()
-{
-	ios_base::sync_with_stdio(false);
-	cin.tie(nullptr);
-	cout.tie(nullptr);
-
-	string allowed = "ab";
-	vector<string> words = {"ad", "bd", "aaab", "baa", "badab"};
-
-	Solution sol;
-	cout << sol.countConsistentStrings(allowed, words) << endl;
-
-	return 0;
-}
