@@ -22,6 +22,7 @@ public:
 			if (s[i] == 'i')
 			{
 				counter++;
+				midPointer = rightPointer;
 				rightPointer++;
 			}
 			else
@@ -29,8 +30,7 @@ public:
 				if (midPointer != rightPointer)
 				{
 					tempSubstring = s.substr(leftPointer, midPointer);
-
-					if ((counter % 2) != 0)
+					if (counter % 2)
 					{
 						reverse(tempSubstring.begin(), tempSubstring.end());
 					}
@@ -39,12 +39,16 @@ public:
 
 					tempSubstring = "";
 					counter = 0;
-					leftPointer = rightPointer + 1;
-					midPointer = rightPointer + 1;
+					// rightPointer;
+					leftPointer = rightPointer;
+					midPointer = rightPointer;
+
+					cout << "lp = " << leftPointer << "val = " << s[leftPointer] << endl;
+					cout << "mp = " << midPointer << "val = " << s[midPointer] << endl;
+					cout << "rp = " << rightPointer << "val = " << s[rightPointer] << endl;
 				}
 				else
 				{
-					midPointer++;
 					rightPointer++;
 				}
 			}
@@ -55,17 +59,17 @@ public:
 				{
 					tempSubstring = s.substr(leftPointer, midPointer);
 
-					if ((counter % 2) != 0)
+					if (counter % 2)
 					{
 						reverse(tempSubstring.begin(), tempSubstring.end());
 					}
 
 					result += tempSubstring;
-
-					tempSubstring = "";
-					counter = 0;
-					leftPointer = rightPointer + 1;
-					midPointer = rightPointer + 1;
+				}
+				else
+				{
+					tempSubstring = s.substr(leftPointer, midPointer);
+					result += tempSubstring;
 				}
 			}
 		}
@@ -80,9 +84,10 @@ int main()
 	cin.tie(nullptr);
 	cout.tie(nullptr);
 
-	string s = "string";
+	// string s = "string";
 	// string s = "poiinter";
 	// string s = "qskyviiiii";
+	string s = "viwif";
 
 	Solution sol;
 	cout << sol.finalString(s) << endl;
