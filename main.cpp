@@ -14,5 +14,8 @@ int main() {
   cin.tie(nullptr);
   cout.tie(nullptr);
 
+  ifstream input("input.txt");
+  ofstream output("output.txt");
+
   return 0;
 }
