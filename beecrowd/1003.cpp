@@ -9,8 +9,6 @@ Space Complexity =>
 
 using namespace std;
 
-const double PI = 3.14159;
-
 int main() {
   ios_base::sync_with_stdio(false);
   cin.tie(nullptr);
