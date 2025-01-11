@@ -6,7 +6,7 @@
 
 async function sleep(millis) {
 	return new Promise((resolve, reject) => {
-		if (typeof millis !== "number" || isNaN(millis)) {
+		if (typeof millis !== "number" || Number.isNaN(millis)) {
 			reject(new Error('Invalid argument. Expected a number.'));
 		} else {
 			setTimeout(resolve, millis);
