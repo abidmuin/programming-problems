@@ -6,8 +6,6 @@ Space Complexity =>
 */
 
 #include <bits/stdc++.h>
-#include <fstream>
-#include <iomanip>
 
 using namespace std;
 
