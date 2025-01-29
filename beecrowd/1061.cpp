@@ -6,7 +6,6 @@ Space Complexity =>
 */
 
 #include <bits/stdc++.h>
-#include <fstream>
 
 using namespace std;
 
@@ -34,35 +33,21 @@ int main() {
   sscanf(time1.c_str(), "%d : %d : %d", &startHour, &startMinute, &startSecond);
   sscanf(time2.c_str(), "%d : %d : %d", &endHour, &endMinute, &endSecond);
 
-  const int totalSecondsPerDay = (24 * 60 * 60);
+  long long totalStartSeconds = (startDay * 24 * 3600) + (startHour * 3600) +
+                                (startMinute * 60) + startSecond;
+  long long totalEndSeconds =
+      (endDay * 24 * 3600) + (endHour * 3600) + (endMinute * 60) + endSecond;
 
-  int totalSecondsElapsedInStartingDay =
-      (startHour * 60 * 60) + (startMinute * 60) + startSecond;
+  long long durationSeconds = totalEndSeconds - totalStartSeconds;
 
-  int totalSecondsInStartingDay =
-      totalSecondsPerDay - totalSecondsElapsedInStartingDay;
+  int days = (durationSeconds / (24 * 3600));
+  durationSeconds %= (24 * 3600);
 
-  int totalSecondsInEndingDay =
-      (endHour * 60 * 60) + (endMinute * 60) + endSecond;
+  int hours = (durationSeconds / 3600);
+  durationSeconds %= 3600;
 
-  int totalSeconds = totalSecondsInStartingDay + totalSecondsInEndingDay;
-
-  int hours = (totalSeconds / 3600);
-  totalSeconds -= (hours * 3600);
-  int minutes = (totalSeconds / 60);
-  totalSeconds -= (minutes * 60);
-  int seconds = (totalSeconds / 60);
-
-  int days = (endDay - startDay);
-
-  if (endHour < startHour) {
-    days--;
-  } else if ((endHour == startHour) && (endMinute < startMinute)) {
-    days--;
-  } else if ((endHour == startHour) && (endMinute == startMinute) &&
-             (endSecond == startSecond)) {
-    days--;
-  }
+  int minutes = (durationSeconds / 60);
+  int seconds = (durationSeconds % 60);
 
   cout << days << " dia(s)" << endl;
   cout << hours << " hora(s)" << endl;
