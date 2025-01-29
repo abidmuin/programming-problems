@@ -1,13 +1,31 @@
 // https://judge.beecrowd.com/en/problems/view/1061
 
 /*
-Time Complexity =>
-Space Complexity =>
+Time Complexity => O(1)
+Space Complexity => O(1)
 */
 
 #include <bits/stdc++.h>
 
 using namespace std;
+
+const int SECONDS_PER_DAY = (24 * 60 * 60);
+const int SECONDS_PER_HOUR = (60 * 60);
+const int SECONDS_PER_MINUTE = 60;
+
+pair<int, int> parseDayAndTime(const string &dayStr, const string &timeStr) {
+  int day = stoi(dayStr.substr(4));
+  int hour, minute, second;
+  char colon;
+
+  istringstream iss(timeStr);
+  iss >> hour >> colon >> minute >> colon >> second;
+
+  int totalSeconds =
+      hour * SECONDS_PER_HOUR + minute * SECONDS_PER_MINUTE + second;
+
+  return {day, totalSeconds};
+}
 
 int main() {
   ios_base::sync_with_stdio(false);
@@ -17,37 +35,27 @@ int main() {
   ifstream input("input.txt");
   ofstream output("output.txt");
 
-  string day1, time1, day2, time2;
+  string startDayStr, startTimeStr, endDayStr, endTimeStr;
+  getline(cin, startDayStr);
+  getline(cin, startTimeStr);
+  getline(cin, endDayStr);
+  getline(cin, endTimeStr);
 
-  getline(cin, day1);
-  getline(cin, time1);
-  getline(cin, day2);
-  getline(cin, time2);
+  auto [startDay, startTimeSeconds] =
+      parseDayAndTime(startDayStr, startTimeStr);
+  auto [endDay, endTimeSeconds] = parseDayAndTime(endDayStr, endTimeStr);
 
-  int startDay = stoi(day1.substr(4));
-  int endDay = stoi(day2.substr(4));
+  long long durationSeconds = (endDay * SECONDS_PER_DAY + endTimeSeconds) -
+                              (startDay * SECONDS_PER_DAY + startTimeSeconds);
 
-  int startHour, startMinute, startSecond;
-  int endHour, endMinute, endSecond;
+  int days = durationSeconds / SECONDS_PER_DAY;
+  durationSeconds %= SECONDS_PER_DAY;
 
-  sscanf(time1.c_str(), "%d : %d : %d", &startHour, &startMinute, &startSecond);
-  sscanf(time2.c_str(), "%d : %d : %d", &endHour, &endMinute, &endSecond);
+  int hours = durationSeconds / SECONDS_PER_HOUR;
+  durationSeconds %= SECONDS_PER_HOUR;
 
-  long long totalStartSeconds = (startDay * 24 * 3600) + (startHour * 3600) +
-                                (startMinute * 60) + startSecond;
-  long long totalEndSeconds =
-      (endDay * 24 * 3600) + (endHour * 3600) + (endMinute * 60) + endSecond;
-
-  long long durationSeconds = totalEndSeconds - totalStartSeconds;
-
-  int days = (durationSeconds / (24 * 3600));
-  durationSeconds %= (24 * 3600);
-
-  int hours = (durationSeconds / 3600);
-  durationSeconds %= 3600;
-
-  int minutes = (durationSeconds / 60);
-  int seconds = (durationSeconds % 60);
+  int minutes = durationSeconds / SECONDS_PER_MINUTE;
+  int seconds = durationSeconds % SECONDS_PER_MINUTE;
 
   cout << days << " dia(s)" << endl;
   cout << hours << " hora(s)" << endl;
