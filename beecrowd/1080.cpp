@@ -9,10 +9,6 @@ Space Complexity =>
 
 using namespace std;
 
-const double FIRST_NUMBER_WEIGHT = 2;
-const double SECOND_NUMBER_WEIGHT = 3;
-const double THIRD_NUMBER_WEIGHT = 5;
-
 int main() {
   ios_base::sync_with_stdio(false);
   cin.tie(nullptr);
