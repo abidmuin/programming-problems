@@ -1,4 +1,4 @@
-// https://judge.beecrowd.com/en/problems/view/1095
+// https://judge.beecrowd.com/en/problems/view/1096
 
 /*
 Time Complexity =>
