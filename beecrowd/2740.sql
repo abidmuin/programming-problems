@@ -2,8 +2,9 @@
 
 (SELECT 'Podium: ' || team AS name
  FROM league
- WHERE position IN (1, 2, 3))
+ WHERE position <= 3)
 UNION ALL
 (SELECT 'Demoted: ' || team AS name
  FROM league
- WHERE position IN (14, 15));
+ WHERE position IN ((SELECT MAX(position) FROM league),
+                    (SELECT MAX(position) - 1 FROM league)));
