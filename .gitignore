@@ -1,10 +1,9 @@
-# *
-# !*.cpp
+# IDE
+.vscode/
+.idea/
 
- .vscode/
+# C++
+main
 
-# /cses/*
-# !/cses/*.cpp
-
-# !/project_euler/
-# !/project_euler/*.cpp
+# Java
+out/
