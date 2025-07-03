@@ -11,7 +11,7 @@ public class ContainsDuplicate {
 	}
 }
 
-// https://leetcode.com/problems/contains-duplicate
+// https://leetcode.com/problems/contains-duplicate/
 //IMPORTANT!! Submit Code Region Begin(Do not remove this line)
 class Solution {
 	public boolean containsDuplicate(int[] nums) {
