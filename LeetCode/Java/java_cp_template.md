@@ -13,7 +13,7 @@ public class $!velocity.camelCaseName(${challenge.name}) {
     }
 }
 
-// https://leetcode.com/problems/${challenge.slug}
+// https://leetcode.com/problems/${challenge.slug}/
 ${challenge.code}
 
 ```
