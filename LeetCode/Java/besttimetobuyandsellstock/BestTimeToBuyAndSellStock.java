@@ -1,3 +1,5 @@
+package besttimetobuyandsellstock;
+
 public class BestTimeToBuyAndSellStock {
 	public static void main(String[] args) {
 		Solution sol = new Solution();
