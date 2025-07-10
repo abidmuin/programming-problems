@@ -14,24 +14,15 @@ public class MoveZeroes {
 //IMPORTANT!! Submit Code Region Begin(Do not remove this line)
 class Solution {
 	public void moveZeroes(int[] nums) {
-		int p1 = 0, p2 = 1;
-		int n = nums.length;
+		int insertPos = 0;
 
-		while (p1 < n && p2 < n) {
-			if ((nums[p1] == 0) && (nums[p2] == 0)) {
-				p2++;
-			} else if ((nums[p1] == 0) && (nums[p2] != 0)) {
-				int temp = nums[p1];
-				nums[p1] = nums[p2];
-				nums[p2] = temp;
-
-				p1++;
-				p2++;
-			} else {
-				p1++;
-				if (p1 >= p2) {
-					p2 = p1 + 1;
+		for (int i = 0; i < nums.length; i++) {
+			if (nums[i] != 0) {
+				if (i != insertPos) {
+					nums[insertPos] = nums[i];
+					nums[i] = 0;
 				}
+				insertPos++;
 			}
 		}
 
